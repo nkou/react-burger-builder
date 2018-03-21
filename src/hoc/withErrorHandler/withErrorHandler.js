@@ -10,7 +10,7 @@ const withErrorHandler = (WrappedComponent, axios) => {
         }
 
         componentWillMount() {
-            /* Registering the interceptors before the child components are rendered. */
+            // Registering the interceptors before the child components are rendered.
             this.requestInterceptor = axios.interceptors.request.use(request => {
                 this.setState({ error: null });
                 return request;
@@ -21,6 +21,7 @@ const withErrorHandler = (WrappedComponent, axios) => {
         }
 
         componentWillUnmount() {
+            // Remove the interceptors preventing memory leaks.
             axios.interceptors.request.eject(this.requestInterceptor);
             axios.interceptors.response.eject(this.responseInterceptor);
         }
