@@ -16,7 +16,11 @@ class ContactData extends Component {
                     type: 'text',
                     placeholder: 'Your name'
                 },
-                value: ''
+                value: '',
+                validation: {
+                    required: true
+                },
+                valid: false
             },
             email: {
                 elementType: 'input',
@@ -24,7 +28,11 @@ class ContactData extends Component {
                     type: 'email',
                     placeholder: 'Your email'
                 },
-                value: ''
+                value: '',
+                validation: {
+                    required: true
+                },
+                valid: false
             },
             street: {
                 elementType: 'input',
@@ -32,7 +40,11 @@ class ContactData extends Component {
                     type: 'text',
                     placeholder: 'Street'
                 },
-                value: ''
+                value: '',
+                validation: {
+                    required: true
+                },
+                valid: false
             },
             postalCode: {
                 elementType: 'input',
@@ -40,7 +52,13 @@ class ContactData extends Component {
                     type: 'text',
                     placeholder: 'Postal code'
                 },
-                value: ''
+                value: '',
+                validation: {
+                    required: true,
+                    minLength: 5,
+                    maxLength: 5
+                },
+                valid: false
             },
             deliveryMethod: {
                 elementType: 'select',
@@ -56,6 +74,7 @@ class ContactData extends Component {
         loading: false
     }
 
+    // Order form submit handler.
     orderHandler = (event) => {
         event.preventDefault();
 
@@ -81,12 +100,36 @@ class ContactData extends Component {
             });
     }
 
+    // Form element value change handler.
     inputChangedHandler = (event, inputIdentifier) => {
         const updatedOrderForm = { ...this.state.orderForm };
         const updatedOrderFormElement = { ...updatedOrderForm[inputIdentifier] };
+        // Update form element value.
         updatedOrderFormElement.value = event.target.value;
+        // Validate form element value.
+        updatedOrderFormElement.valid = this.checkValidity(updatedOrderFormElement.value, updatedOrderFormElement.validation);
         updatedOrderForm[inputIdentifier] = updatedOrderFormElement;
+        console.log(updatedOrderFormElement);
         this.setState({ orderForm: updatedOrderForm });
+    }
+
+    // Form element value validation.
+    checkValidity(value, rules) {
+        let isValid = true;
+
+        if (rules.required) {
+            isValid = value.trim() !== '' && isValid;
+        }
+
+        if (rules.minLength) {
+            isValid = value.length >= rules.minLength && isValid;
+        }
+
+        if (rules.maxLength) {
+            isValid = value.length <= rules.maxLength && isValid;
+        }
+
+        return isValid;
     }
 
     render() {
