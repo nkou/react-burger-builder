@@ -9,11 +9,49 @@ import classes from './ContactData.css';
 
 class ContactData extends Component {
     state = {
-        name: '',
-        email: '',
-        address: {
-            street: '',
-            postalCode: ''
+        orderForm: {
+            name: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Your name'
+                },
+                value: ''
+            },
+            email: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'email',
+                    placeholder: 'Your email'
+                },
+                value: ''
+            },
+            street: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Street'
+                },
+                value: ''
+            },
+            postalCode: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Postal code'
+                },
+                value: ''
+            },
+            deliveryMethod: {
+                elementType: 'select',
+                elementConfig: {
+                    options: [
+                        { value: 'standard', displayValue: 'Standard' },
+                        { value: 'fast', displayValue: 'Fast' },
+                    ]
+                },
+                value: ''
+            },
         },
         loading: false
     }
@@ -25,15 +63,6 @@ class ContactData extends Component {
         const order = {
             ingredients: this.props.ingredients,
             price: this.props.price,
-            customer: {
-                name: 'nkou',
-                email: 'test@test.com',
-                address: {
-                    street: 'TestStreet 1',
-                    postalCode: 12312,
-                },
-            },
-            deliveryMethod: 'fast'
         }
 
         axios.post('/orders.json', order)
@@ -50,7 +79,7 @@ class ContactData extends Component {
     render() {
         let form = (
             <form>
-                <Input inputtype="input" type="email" name="email" placeholder="Your email" />
+                <Input elementType="..." elementConfig="..." value="..." />
                 <Input inputtype="input" type="text" name="name" placeholder="Your name" />
                 <Input inputtype="input" type="text" name="street" placeholder="Street" />
                 <Input inputtype="input" type="text" name="postalCode" placeholder="Postal Code" />
