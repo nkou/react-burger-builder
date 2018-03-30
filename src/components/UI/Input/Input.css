@@ -1,6 +1,6 @@
 .Input {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     box-sizing: border-box;
 }
 
@@ -14,8 +14,8 @@
     display: block;
     width: 100%;
     outline: none;
-    border: 1px solid #44475a;
-    background-color: #fff;
+    border: 2px solid #44475a;
+    background-color: #f8f8f2;
     font: inherit;
     padding: 6px 10px;
     box-sizing: border-box;
@@ -23,14 +23,14 @@
 
 .InputElement:focus {
     outline: none;
-    background-color: #f8f8f2;
+    background-color: #bd93f9;
 }
 
 .Invalid {
-    border: 1px solid #ff5555;
+    border: 2px solid #ff79c6;
 }
 
 .ValidationError {
-    color: #ff5555;
+    color: #ff79c6;
     margin: 4px 0 0;
 }

@@ -1,21 +1,22 @@
 .Button {
-    background-color: transparent;
+    background-color: #44475a;
     border: none;
-    color: #f8f8f2;
-    outline: none;
+    color: #8be9fd;
     cursor: pointer;
     font: inherit;
+    font-weight: bold;
+    outline: none;
     padding: 10px;
     margin: 10px;
-    font-weight: bold;
 }
 
-.Button:first-of-type {
+/* .Button:first-of-type {
     margin-left: 0;
     padding-left: 0;
-}
+} */
 
 .Button:disabled {
+    background-color: #282a36;
     color: #44475a;
     cursor: not-allowed;
 }
@@ -25,5 +26,5 @@
 }
 
 .Danger {
-    color: #ff5555;
+    color: #ff79c6;
 }
