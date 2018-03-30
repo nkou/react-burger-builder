@@ -76,7 +76,7 @@ class ContactData extends Component {
                         { value: 'fast', displayValue: 'Fast' },
                     ]
                 },
-                value: '',
+                value: 'standard',
                 valid: true
             },
         },
