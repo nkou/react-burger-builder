@@ -22,12 +22,13 @@ class ContactData extends Component {
                 },
                 valid: false,
                 touched: false,
+                errorMessage: 'Please enter your name!'
             },
             email: {
                 elementType: 'input',
                 elementConfig: {
                     type: 'email',
-                    placeholder: 'Your email'
+                    placeholder: 'Your e-mail'
                 },
                 value: '',
                 validation: {
@@ -35,6 +36,7 @@ class ContactData extends Component {
                 },
                 valid: false,
                 touched: false,
+                errorMessage: 'Please enter a valid e-mail!'
             },
             street: {
                 elementType: 'input',
@@ -48,6 +50,7 @@ class ContactData extends Component {
                 },
                 valid: false,
                 touched: false,
+                errorMessage: 'Please enter your address!'
             },
             postalCode: {
                 elementType: 'input',
@@ -63,6 +66,7 @@ class ContactData extends Component {
                 },
                 valid: false,
                 touched: false,
+                errorMessage: 'Please enter a valid 5-digit postal code!'
             },
             deliveryMethod: {
                 elementType: 'select',
@@ -155,6 +159,7 @@ class ContactData extends Component {
                         touched={formElement.config.touched}
                         shouldValidate={formElement.config.validation}
                         invalid={!formElement.config.valid}
+                        errorMessage={formElement.config.errorMessage}
                         changed={(event) => this.inputChangedHandler(event, formElement.id)} />
                 ))}
                 <Button btnType="Success">ORDER</Button>

@@ -29,3 +29,8 @@
 .Invalid {
     border: 1px solid #ff5555;
 }
+
+.ValidationError {
+    color: #ff5555;
+    margin: 4px 0 0;
+}
