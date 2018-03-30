@@ -76,9 +76,11 @@ class ContactData extends Component {
                         { value: 'fast', displayValue: 'Fast' },
                     ]
                 },
-                value: ''
+                value: '',
+                valid: true
             },
         },
+        formIsValid: false,
         loading: false
     }
 
@@ -118,7 +120,13 @@ class ContactData extends Component {
         updatedOrderFormElement.valid = this.checkValidity(updatedOrderFormElement.value, updatedOrderFormElement.validation);
         updatedOrderFormElement.touched = true;
         updatedOrderForm[inputIdentifier] = updatedOrderFormElement;
-        this.setState({ orderForm: updatedOrderForm });
+        // Handling overall form validity.
+        let formIsValid = true;
+        for (let inputIdentifier in updatedOrderForm) {
+            formIsValid = updatedOrderForm[inputIdentifier].valid && formIsValid;
+        }
+
+        this.setState({ orderForm: updatedOrderForm, formIsValid: formIsValid });
     }
 
     // Form element value validation.
@@ -162,7 +170,9 @@ class ContactData extends Component {
                         errorMessage={formElement.config.errorMessage}
                         changed={(event) => this.inputChangedHandler(event, formElement.id)} />
                 ))}
-                <Button btnType="Success">ORDER</Button>
+                <Button
+                    btnType="Success"
+                    disabled={!this.state.formIsValid}>ORDER</Button>
             </form>
         );
         if (this.state.loading) {
